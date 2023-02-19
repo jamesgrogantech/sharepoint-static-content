@@ -4,6 +4,18 @@ This is a CLI based node library which takes a SharePoint list and extracts the 
 
 This allows SharePoint lists to be used as a rudimentary CMS system.
 
+## Install
+
+```bash
+npm install -g sharepoint-static-content
+```
+
+## Run
+
+```bash
+npx sharepoint-static-content
+```
+
 ## Prerequisites
 
 - SharePoint site (SharePoint Online only)
@@ -25,4 +37,5 @@ SSC_TENANT_ID="Azure AD tenant id"
 SSC_SITE_ID="sharepoint site id"
 SSC_LIST_ID="sharepoint list id"
 SSC_FOLDER_PATH="./assets"
+SSC_IMAGES_PATH="./assets/img"
 ```

@@ -11,7 +11,7 @@ const { mkdirSync, writeFileSync } = require('fs');
 console.log(`🔑 Authenticating SharePoint Online`);
 
 const generate = async () => {
-  mkdirSync('./assets', { recursive: true });
+  mkdirSync(process.env.SSC_FOLDER_PATH, { recursive: true });
   const token = await getAccessToken();
 
   const [rows, columns, userList] = await Promise.all([
@@ -101,7 +101,9 @@ const generate = async () => {
       if (columnTypes[key]) {
         if (columnTypes[key].type === 'image') {
           try {
-            const folderPath = `${process.env.SSC_FOLDER_PATH}/images`;
+            const folderPath =
+              (process.env.SSC_IMAGES_PATH as string) ??
+              `${process.env.SSC_FOLDER_PATH}/images`;
             const json = JSON.parse(value);
             if (json?.id && json?.fileName) {
               newValue = `${folderPath}/${json.fileName}`;
