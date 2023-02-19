@@ -24,5 +24,5 @@ SSC_CLIENT_SECRET="Azure AD app registration client secret"
 SSC_TENANT_ID="Azure AD tenant id"
 SSC_SITE_ID="sharepoint site id"
 SSC_LIST_ID="sharepoint list id"
-
+SSC_FOLDER_PATH="./assets"
 ```
