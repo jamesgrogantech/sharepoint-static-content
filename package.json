@@ -1,0 +1,38 @@
+{
+  "name": "sharepoint-static-content",
+  "version": "1.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:jamesgrogantech/sharepoint-static-content.git",
+  "author": "James Grogan <james.grogan2@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "tsc": "tsc",
+    "lint": "eslint '**/*.{js,ts}' --fix",
+    "prettier": "prettier --write .",
+    "build": "npm run tsc && npm run chmod",
+    "chmod": "chmod u+x ./bin/index.js"
+  },
+  "bin": {
+    "multiply": "./bin/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "2.8.4",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@azure/msal-node": "^1.15.0",
+    "dotenv": "^16.0.3",
+    "node-fetch": "^2.6.6",
+    "sharp": "^0.31.3"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ]
+}
