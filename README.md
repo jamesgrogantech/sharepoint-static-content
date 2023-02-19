@@ -17,12 +17,12 @@ This allows SharePoint lists to be used as a rudimentary CMS system.
 This package requires these variables to be set first.
 
 ```dotenv
-SHAREPOINT_USERNAME="service principle username"
-SHAREPOINT_PASSWORD="service principle password"
-CLIENT_ID="Azure AD app registration client id (application id)"
-CLIENT_SECRET="Azure AD app registration client secret"
-TENANT_ID="Azure AD tenant id"
-SITE_ID="sharepoint site id"
-LIST_ID="sharepoint list id"
+SSC_USERNAME="service principle username"
+SSC_PASSWORD="service principle password"
+SSC_CLIENT_ID="Azure AD app registration client id (application id)"
+SSC_CLIENT_SECRET="Azure AD app registration client secret"
+SSC_TENANT_ID="Azure AD tenant id"
+SSC_SITE_ID="sharepoint site id"
+SSC_LIST_ID="sharepoint list id"
 
 ```

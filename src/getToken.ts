@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { ConfidentialClientApplication } = require('@azure/msal-node');
 
-const clientId = process.env.CLIENT_ID;
-const tenantId = process.env.TENANT_ID;
-const username = process.env.SHAREPOINT_USERNAME;
-const password = process.env.SHAREPOINT_PASSWORD;
-const clientSecret = process.env.CLIENT_SECRET;
+const clientId = process.env.SSC_CLIENT_ID;
+const tenantId = process.env.SSC_TENANT_ID;
+const username = process.env.SSC_USERNAME;
+const password = process.env.SSC_PASSWORD;
+const clientSecret = process.env.SSC_CLIENT_SECRET;
 
 const scopes = ['https://graph.microsoft.com/Sites.Read.All'];
 

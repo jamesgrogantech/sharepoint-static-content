@@ -8,27 +8,24 @@ import { getAccessToken } from './getToken';
 import { getUserList } from './getUserList';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { mkdirSync, writeFileSync } = require('fs');
-console.log(
-  `🔑 Authenticating SharePoint Online using ${process.env.SHAREPOINT_USERNAME}`,
-);
+console.log(`🔑 Authenticating SharePoint Online`);
 
 const generate = async () => {
-  console.time('myFunction');
   mkdirSync('./assets', { recursive: true });
   const token = await getAccessToken();
 
   const [rows, columns, userList] = await Promise.all([
     getSharePointList(
       token,
-      process.env.SITE_ID as string,
-      process.env.LIST_ID as string,
+      process.env.SSC_SITE_ID as string,
+      process.env.SSC_LIST_ID as string,
     ),
     getListColumns(
       token,
-      process.env.SITE_ID as string,
-      process.env.LIST_ID as string,
+      process.env.SSC_SITE_ID as string,
+      process.env.SSC_LIST_ID as string,
     ),
-    getUserList(token, process.env.SITE_ID as string),
+    getUserList(token, process.env.SSC_SITE_ID as string),
   ]);
 
   const columnTypes: {
@@ -104,14 +101,14 @@ const generate = async () => {
       if (columnTypes[key]) {
         if (columnTypes[key].type === 'image') {
           try {
-            const folderPath = './assets/images';
+            const folderPath = `${process.env.SSC_FOLDER_PATH}/images`;
             const json = JSON.parse(value);
             if (json?.id && json?.fileName) {
               newValue = `${folderPath}/${json.fileName}`;
               images.push(
                 getImageData(
                   token,
-                  process.env.SITE_ID as string,
+                  process.env.SSC_SITE_ID as string,
                   json.id,
                   folderPath,
                 ),
@@ -130,10 +127,11 @@ const generate = async () => {
   }
   console.log('🖼️  Optimising Images...');
   await Promise.all(images);
-  // write data to a json file ./assets/data.json
-  console.log('💾 Saving to JSON');
-  writeFileSync('./assets/data.json', JSON.stringify(data));
-  console.timeEnd('myFunction');
+  console.log(`💾 Saving content to: ${process.env.SSC_FOLDER_PATH}/data.json`);
+  writeFileSync(
+    `${process.env.SSC_FOLDER_PATH}/data.json`,
+    JSON.stringify(data),
+  );
 };
 
 generate();
