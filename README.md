@@ -1,5 +1,7 @@
 # SharePoint Static Content
 
+Still in very early Alpha - Not suitable for Production
+
 This is a CLI based node library which takes a SharePoint list and extracts the content and images to be served on a static site.
 
 This allows SharePoint lists to be used as a rudimentary CMS system.
